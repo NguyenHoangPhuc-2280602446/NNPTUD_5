@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Product Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="p-4">
+
+    <div class="container">
+        <h2 class="mb-3">Product Dashboard</h2>
+
+        <div class="d-flex gap-2 mb-3">
+            <input id="searchInput" class="form-control w-25" placeholder="Search title...">
+            <select id="pageSize" class="form-select w-25">
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="20">20</option>
+            </select>
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createModal">Create</button>
+            <button id="exportBtn" class="btn btn-primary">Export CSV</button>
+        </div>
+
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th id="sortTitle" style="cursor:pointer">Title ⬍</th>
+                    <th id="sortPrice" style="cursor:pointer">Price ⬍</th>
+                    <th>Category</th>
+                    <th>Images</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+
+        <div id="pagination" class="mt-3"></div>
+    </div>
+
+    <!-- Detail Modal -->
+    <div class="modal fade" id="detailModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <input id="editTitle" class="form-control mb-2">
+                    <input id="editPrice" class="form-control mb-2">
+                    <textarea id="editDesc" class="form-control mb-2"></textarea>
+                    <button id="saveBtn" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Modal -->
+    <div class="modal fade" id="createModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <input id="newTitle" class="form-control mb-2" placeholder="Title">
+                    <input id="newPrice" class="form-control mb-2" placeholder="Price">
+                    <textarea id="newDesc" class="form-control mb-2" placeholder="Description"></textarea>
+                    <button id="createBtn" class="btn btn-success">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
